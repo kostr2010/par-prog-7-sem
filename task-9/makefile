@@ -1,8 +1,8 @@
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -fopenmp
+CFLAGS=-Wall -Werror -Wextra -fopenmp -g
 
-SRC=main.c
-DST=a.out
+SRC=bugged1 bugged2 bugged3 bugged4 bugged5 bugged6
+all: $(SRC)
 
-all:
-	$(CC) $(CFLAGS) $(SRC) -o $(DST)
+$(SRC): %: %.c
+	$(CC) $(CFLAGS) -o $@.out $<
