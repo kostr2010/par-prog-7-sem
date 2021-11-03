@@ -1,6 +1,8 @@
 #!/bin/bash
 
 N_THREADS=1
+T=1
+FILE=""
 
 if [[ -z "$1" ]]
 	then
@@ -9,10 +11,20 @@ if [[ -z "$1" ]]
 		N_THREADS=$1;
 fi
 
-if [[ -z "$2" || -z "$3" || -z "$4" || -z "$5" ]]
+if [[ -z "$2" ]]
 	then
-		echo "no matrix size was given, defaults to 1*1"
-		OMP_NUM_THREADS=$N_THREADS ./a.out 1 1 1 1;
+		echo "no type of input was given. defaults to 1"
 	else
-		OMP_NUM_THREADS=$N_THREADS ./a.out $2 $3 $4 $5;
+		T=$2;
 fi
+
+if [[ -z "$3" && $2 == 0 ]]
+	then
+		echo "no file was given. exiting"
+		exit 1
+	else
+		FILE=$3;
+
+fi
+
+OMP_NUM_THREADS=$N_THREADS ./a.out $T $FILE;
