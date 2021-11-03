@@ -19,12 +19,12 @@ int main(int argc, char *argv[]) {
 
   if (arr_sz <= 0) {
     return -10;
-  }
-
+  } else if (arr_sz > 1) {
 #pragma omp parallel
-  {
+    {
 #pragma omp single
-    Quicksort(arr, 0, arr_sz - 1);
+      Quicksort(arr, 0, arr_sz - 1);
+    }
   }
 
   FILE *f = fopen("out.txt", "w");
