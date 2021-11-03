@@ -4,7 +4,7 @@ run `make`
 
 # HOW TO RUN
 
-run `run.sh N`, where N - number of threads
+run `execute.sh N`, where N - number of threads
 `res.txt` is the output file, that contains elements of the modified array
 
 # HOW TO VERIFY

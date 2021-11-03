@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 #pragma omp parallel shared(sum)
   {
 #pragma omp for reduction(+ : sum) schedule(guided)
-    for (long i = 0; i < num; ++i) {
+    for (long i = 1; i <= num; ++i) {
       sum += i;
     }
   }

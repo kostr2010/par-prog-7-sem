@@ -4,4 +4,4 @@ run `make`
 
 # HOW TO RUN
 
-run `run.sh N M`, where N - number of threads, M - number to sum up to
+run `execute.sh N M`, where N - number of threads, M - number to sum up to
