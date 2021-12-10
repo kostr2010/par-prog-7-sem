@@ -1,6 +1,6 @@
 CC=gcc
 MPICC=mpicc
-CFLAGS= -lm -Wall -Wextra -Werror
+CFLAGS=-std=c99 -lm -Wall -Wextra -Werror
 
 all: main 1g
 

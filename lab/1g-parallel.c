@@ -128,8 +128,8 @@ int main(int argc, char **argv) {
   // map[comm_rank].begin + OVERLAP_J) elements and iterate using i % 2
   subproc_buf = (double *)realloc(
       subproc_buf, ISIZE * (subproc_n_elems + OVERLAP_J) * sizeof(double));
-  explicit_bzero(subproc_buf,
-                 ISIZE * (subproc_n_elems + OVERLAP_J) * sizeof(double));
+  memset(subproc_buf, '\0',
+         ISIZE * (subproc_n_elems + OVERLAP_J) * sizeof(double));
 
   assert(subproc_buf != NULL);
 
