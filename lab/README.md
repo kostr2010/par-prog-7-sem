@@ -114,7 +114,7 @@ next, we'll calculate dependency distance as follows:
 
 `D = J - K`
 
-in our case `D = {1, 3}`, so there is true dependency and 2nd layer can be made parallel using no more than 3 workers, while first layer can't be made parallel at all. so we will do
+in our case `D = {1, 3}`, so there is true dependency and 2nd layer can be made parallel using no more than 3 workers, while first layer can't be made parallel at all. from here, we can conclude that given program is poorly paralellizable. so we will implement the following approach: we will divide given space into columns by number of workers, and they will each calculate their own slice and then exchange values at borders between them. line by line, thus we will calculate final matrix
 
 - final results can be seen in file `1g-parallel.c`
 
@@ -128,5 +128,5 @@ in our case `D = {1, 3}`, so there is true dependency and 2nd layer can be made 
   - where possible, we will paralellize using external index, since it requires less messges sent, and is easier to write
 - return exercise:
   - let's try to evaluate possible efficiency `E_n` and acceleration `S_n`
-  - for acceleration we have: `S_n = T_1 / T_n`
-  - for efficiency, let's consider: `E_n = S_n / n`
+  - for acceleration we have: `S_n = T_1 / T_n = T_1 / (T_1 / n + 2 * T_send * n) = n / (1 + 2 * n^2 * T_send / T_1)`
+  - for efficiency, let's consider: `E_n = S_n / n = 1 / (1 + 2 * n^2 * T_send / T_1)`
