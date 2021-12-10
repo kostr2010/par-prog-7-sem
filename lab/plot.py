@@ -10,14 +10,14 @@ print (df)
 
 n = df['n'].values
 
-avg = (df['1'].values + df['2'].values + df['3'].values + df['4'].values + df['5'].values) / 5
+avg = (df['1'].values + df['2'].values) / 2
 
-acc = avg[0] / avg[1:]
-eff = acc / n[1:]
+acc = avg[0] / avg
+eff = acc / n
 
 # plot
-plt.plot(n[1:],acc)
-plt.plot(n[1:],eff)
+plt.plot(n,acc)
+plt.plot(n,eff)
 plt.grid()
 plt.legend(['acceleration', 'efficiency'])
 
@@ -32,14 +32,14 @@ print (df)
 
 n = df['n'].values
 
-avg = (df['1'].values + df['2'].values + df['3'].values + df['4'].values + df['5'].values) / 5
+avg = (df['1'].values + df['2'].values) / 2
 
-acc = avg[0] / avg[1:]
-eff = acc / n[1:]
+acc = avg[0] / avg
+eff = acc / n
 
 # plot
-plt.plot(n[1:],acc)
-plt.plot(n[1:],eff)
+plt.plot(n,acc)
+plt.plot(n,eff)
 plt.grid()
 plt.legend(['acceleration', 'efficiency'])
 
