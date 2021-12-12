@@ -71,8 +71,8 @@ in our case `D = {0}`, so once again, loop can be made parallel using any number
   - once again, sending a message in MPI is very costly, so we are dividing in blocks by external index
 - return exercise:
   - let's try to evaluate possible efficiency `E_n` and acceleration `S_n`
-  - for acceleration we have: `S_n = T_1 / T_n`. we will approximate `T_n` as follows: `T_n = T_1 / (T_1 / n + T_gather) = n / (1 + T_gather * n / T_1)`. we will not take in consideration time, spent on allocations and deallocations, since it's negligible
-  - for efficiency, let's consider: `E_n = S_n / n = 1 / (1 + T_gather * n / T_1)`
+  - for acceleration we have: `S_n = T_1 / T_n`. we will approximate `T_n` as follows: `T_n = T_1 / (T_1 / n + T_gather) = n / (1 + T_gather * n / T_1) ~ const if n >> 1`. we will not take in consideration time, spent on allocations and deallocations, since it's negligible
+  - for efficiency, let's consider: `E_n = S_n / n = 1 / (1 + T_gather * n / T_1) ~ 1 / n if n >> 1`
   - see plots in `main.png`
 
 ## EX. 1G
@@ -129,6 +129,6 @@ in our case `D = {1, 3}`, so there is true dependency and 2nd layer can be made 
   - where possible, we will paralellize using external index, since it requires less messges sent, and is easier to write
 - return exercise:
   - let's try to evaluate possible efficiency `E_n` and acceleration `S_n`
-  - for acceleration we have: `S_n = T_1 / T_n = T_1 / (T_1 / n + 2 * T_send * n) = n / (1 + 2 * n^2 * T_send / T_1)`
-  - for efficiency, let's consider: `E_n = S_n / n = 1 / (1 + 2 * n^2 * T_send / T_1)`
+  - for acceleration we have: `S_n = T_1 / T_n = T_1 / (T_1 / n + 2 * T_send * n) = n / (1 + 2 * n^2 * T_send / T_1) ~ 1 / n if n >> 1`
+  - for efficiency, let's consider: `E_n = S_n / n = 1 / (1 + 2 * n^2 * T_send / T_1) ~ 1 / n^2 if n >> 1`
   - see plots in `1g.png`
